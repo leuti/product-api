@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { User, UserStore } from '../models/users';
-import verifyAuthToken from '../services/utils';
+import verifyAuthToken, { convertKeysToCamelCase } from '../services/utils';
 
 const userRoutes = (app: express.Application) => {
   app.get('/users', index);
@@ -18,7 +18,8 @@ const store = new UserStore();
 const index = async (_req: Request, res: Response) => {
   try {
     const users = await store.index();
-    res.json(users);
+    const usersCamelCase = convertKeysToCamelCase(users);
+    res.json(usersCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
@@ -28,7 +29,8 @@ const index = async (_req: Request, res: Response) => {
 const show = async (_req: Request, res: Response) => {
   try {
     const user = await store.show(_req.params.id);
-    res.json(user);
+    const userCamelCase = convertKeysToCamelCase(user);
+    res.json(userCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }

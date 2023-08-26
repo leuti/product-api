@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 
 import { DashboardQueries } from '../services/dashboard';
+import { convertKeysToCamelCase } from '../services/utils';
 
 const dashboardRoutes = (app: express.Application) => {
   app.get('/most_popular_products', productsInOrders);
@@ -12,7 +13,8 @@ const dashboard = new DashboardQueries();
 const productsInOrders = async (_req: Request, res: Response) => {
   try {
     const products = await dashboard.productsInOrders();
-    res.json(products);
+    const productsCamelCase = convertKeysToCamelCase(products);
+    res.json(productsCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
@@ -21,7 +23,8 @@ const productsInOrders = async (_req: Request, res: Response) => {
 const mostExpensiveProducts = async (_req: Request, res: Response) => {
   try {
     const products = await dashboard.mostExpensiveProducts();
-    res.json(products);
+    const productsCamelCase = convertKeysToCamelCase(products);
+    res.json(productsCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
