@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 
 import { Product, ProductStore } from '../models/products';
-import verifyAuthToken from '../services/utils';
+import verifyAuthToken, { convertKeysToCamelCase } from '../services/utils';
 
 const store = new ProductStore();
 
@@ -16,7 +16,8 @@ const productRoutes = (app: express.Application) => {
 const index = async (_req: Request, res: Response) => {
   try {
     const products = await store.index();
-    res.json(products);
+    const productsCamelCase = convertKeysToCamelCase(products);
+    res.json(productsCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
@@ -25,7 +26,8 @@ const index = async (_req: Request, res: Response) => {
 const show = async (_req: Request, res: Response) => {
   try {
     const product = await store.show(_req.params.id);
-    res.json(product);
+    const productCamelCase = convertKeysToCamelCase(product);
+    res.json(productCamelCase);
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }

@@ -27,4 +27,24 @@ const verifyAuthToken = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+function toCamelCase(str: string): string {
+  return str.replace(/([-_][a-z])/g, (group) =>
+    group.toUpperCase().replace('-', '').replace('_', '')
+  );
+}
+
+export function convertKeysToCamelCase(obj: any): any {
+  if (obj instanceof Array) {
+    return obj.map((v) => convertKeysToCamelCase(v));
+  } else if (obj !== null && obj.constructor === Object) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [
+        toCamelCase(key),
+        convertKeysToCamelCase(value),
+      ])
+    );
+  }
+  return obj;
+}
+
 export default verifyAuthToken;
