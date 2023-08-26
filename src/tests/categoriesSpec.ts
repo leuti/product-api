@@ -68,7 +68,7 @@ describe('CATEGORIES\n------------\n\nTesting categories handler', () => {
 
     // Tests
     expect(response.status).toBe(200);
-    expect(response.body.name).toBe('Gardening');
+    expect(response.body.name).toBe('Literature');
   });
 
   it('GET /categories/:id (not existing) --> should return a 400 status if the category does not exist', async () => {

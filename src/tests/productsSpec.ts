@@ -66,7 +66,7 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
 
     // Tests
     expect(response.status).toBe(200);
-    expect(response.body.name).toBe('Test Product');
+    expect(response.body.title).toBe('Crampon');
   });
 
   it('GET /products/:id (not existing) --> should return a 400 status if the product does not exist', async () => {
@@ -80,7 +80,9 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
   it('POST /products[/:id] --> should create a new product', async () => {
     // Create test data
     const productData = {
-      name: 'Test Product',
+      title: 'Test Product',
+      description: 'Description for test product',
+      image_file: 'test.jpg',
       price: 99.99,
       categoryId: 1,
     };
@@ -121,9 +123,11 @@ describe('Testing products model', () => {
   it('create and index of products', async () => {
     const product: Product = {
       // Product to be created
-      name: 'HP laptop',
+      title: 'HP laptop',
+      description: 'A computer',
+      imageFile: 'laptop.jpg',
       price: 800,
-      categoryId: 1,
+      categoryId: 6,
     };
     await store.create(product); // Create product in DB
 
@@ -135,9 +139,11 @@ describe('Testing products model', () => {
   it('create and show of products', async () => {
     const product: Product = {
       // Product to be created
-      name: 'HP laptop',
+      title: 'HP laptop',
+      description: 'A computer',
+      imageFile: 'laptop.jpg',
       price: 800,
-      categoryId: 1,
+      categoryId: 6,
     };
     const prod = await store.create(product); // Create product in DB
 
@@ -153,9 +159,11 @@ describe('Testing products model', () => {
   it('create and delete of products', async () => {
     const product: Product = {
       // Product to be created/deleted
-      name: 'HP laptop',
+      title: 'HP laptop',
+      description: 'A computer',
+      imageFile: 'laptop.jpg',
       price: 800,
-      categoryId: 1,
+      categoryId: 6,
     };
     const prod = await store.create(product); // Create product in DB
 

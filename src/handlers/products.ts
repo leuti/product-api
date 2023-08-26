@@ -34,7 +34,9 @@ const show = async (_req: Request, res: Response) => {
 const create = async (_req: Request, res: Response) => {
   try {
     const product: Product = {
-      name: _req.body.name,
+      title: _req.body.name,
+      description: _req.body.description,
+      imageFile: _req.body.imageFile,
       price: _req.body.price,
       categoryId: _req.body.categoryId,
     };

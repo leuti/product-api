@@ -8,7 +8,7 @@ export class DashboardQueries {
     try {
       const conn = await Client.connect();
       const sql =
-        'SELECT name, price, order_id FROM products INNER JOIN order_products ON products.id = order_products.id LIMIT 5';
+        'SELECT * FROM products INNER JOIN order_products ON products.id = order_products.id LIMIT 5';
 
       const result = await conn.query(sql);
 
@@ -24,8 +24,7 @@ export class DashboardQueries {
   async mostExpensiveProducts(): Promise<{ name: string; price: number }[]> {
     try {
       const conn = await Client.connect();
-      const sql =
-        'SELECT name, price FROM products ORDER BY price DESC LIMIT 5';
+      const sql = 'SELECT * FROM products ORDER BY price DESC LIMIT 5';
 
       const result = await conn.query(sql);
 

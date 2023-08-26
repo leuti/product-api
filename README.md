@@ -75,10 +75,16 @@ ENV=test
 - npm run build: builds the runtime code
 - npm run jasmine: runs the jasmine test scripts
 
-## Some docker commands
+## Some commands
+
+### Docker
 
 - "docker stop proj_pg-postgres-1" stops the container
 - "docker rm proj_pg-postgres-1" removes the container
 - "docker volume rm proj_pg_postgres" removes the docker volume
 - "docker ps" will list running containers
 - "docker volume ls" lists all volumes
+
+### psql
+
+- login (e.g. via Docker Terminal): psql -h localhost -d shopping_test -U shopping_user -p 5432

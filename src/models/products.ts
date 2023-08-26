@@ -11,7 +11,9 @@ Routes in handler:
 
 export type Product = {
   id?: number;
-  name: string;
+  title: string;
+  description: string;
+  imageFile: string;
   price: number;
   categoryId: number;
 };
@@ -55,9 +57,15 @@ export class ProductStore {
     try {
       const conn = await Client.connect();
       const sql =
-        'INSERT INTO products (name, price, category_id) VALUES($1, $2, $3) RETURNING *';
+        'INSERT INTO products (title, description, image_file, price, category_id) VALUES($1, $2, $3, $4, $5) RETURNING *';
 
-      const result = await conn.query(sql, [p.name, p.price, p.categoryId]);
+      const result = await conn.query(sql, [
+        p.title,
+        p.description,
+        p.imageFile,
+        p.price,
+        p.categoryId,
+      ]);
 
       const product = result.rows[0];
 
@@ -65,7 +73,7 @@ export class ProductStore {
 
       return product;
     } catch (err) {
-      throw new Error(`Could not add new product ${p.name}. Error: ${err}`);
+      throw new Error(`Could not add new product ${p.title}. Error: ${err}`);
     }
   }
 
