@@ -80,8 +80,8 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
   it('POST /products[/:id] --> should create a new product', async () => {
     // Create test data
     const productData = {
-      title: 'Test Product',
-      description: 'Description for test product',
+      title: 'Test Product to be deleted 1',
+      description: 'Description for test product 1',
       image_file: 'test.jpg',
       price: 99.99,
       categoryId: 1,
@@ -123,24 +123,29 @@ describe('Testing products model', () => {
   it('create and index of products', async () => {
     const product: Product = {
       // Product to be created
-      title: 'HP laptop',
-      description: 'A computer',
+      title: 'Test product to be deleted 2',
+      description: 'Description for test product 2',
       imageFile: 'laptop.jpg',
       price: 800,
       categoryId: 6,
     };
-    await store.create(product); // Create product in DB
+    const prod = await store.create(product); // Create product in DB
 
     const products = await store.index();
 
     expect(products.length).toBeGreaterThan(0);
+
+    // delete Test Product
+    await request
+      .delete(`/products/${prod.id}`)
+      .set('Authorization', `Bearer ${token}`); // Pass the token in the headers
   });
 
   it('create and show of products', async () => {
     const product: Product = {
       // Product to be created
-      title: 'HP laptop',
-      description: 'A computer',
+      title: 'Test product to be deleted 3',
+      description: 'Description for test product 3',
       imageFile: 'laptop.jpg',
       price: 800,
       categoryId: 6,
@@ -151,6 +156,11 @@ describe('Testing products model', () => {
       // if product was created, the id is returned
       const p = await store.show(prod.id.toString()); // we call the show function to get the prod
       expect(p.id).toBe(prod.id);
+
+      // delete Test Product
+      await request
+        .delete(`/products/${p.id}`)
+        .set('Authorization', `Bearer ${token}`); // Pass the token in the headers
     } else {
       fail('Product creation failed');
     }
@@ -159,8 +169,8 @@ describe('Testing products model', () => {
   it('create and delete of products', async () => {
     const product: Product = {
       // Product to be created/deleted
-      title: 'HP laptop',
-      description: 'A computer',
+      title: 'Test product to be deleted 4',
+      description: 'Description for test product 4',
       imageFile: 'laptop.jpg',
       price: 800,
       categoryId: 6,
