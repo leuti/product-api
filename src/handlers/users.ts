@@ -40,15 +40,20 @@ const show = async (_req: Request, res: Response) => {
 const create = async (req: Request, res: Response) => {
   const user: User = {
     login: req.body.login,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
     passwordHash: req.body.password,
   };
 
   try {
     const newUser = await store.create(user);
     var token = jwt.sign({ user: newUser }, process.env.TOKEN_SECRET as string);
-    res.json({ id: newUser.id, token: token });
+    res.json({
+      login: newUser.login,
+      firstName: newUser.first_name,
+      lastName: newUser.last_name,
+      token: token,
+    });
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
@@ -71,8 +76,8 @@ const destroy = async (_req: Request, res: Response) => {
 const authenticate = async (_req: Request, res: Response) => {
   const user: User = {
     login: _req.body.login,
-    firstName: _req.body.firstName,
-    lastName: _req.body.lastName,
+    first_name: _req.body.firstName,
+    last_name: _req.body.lastName,
     passwordHash: _req.body.password,
   };
   try {

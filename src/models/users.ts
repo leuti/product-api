@@ -9,8 +9,8 @@ const saltRounds: number = parseInt(process.env.SALT_ROUNDS || '0');
 export type User = {
   id?: string;
   login: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   passwordHash: string;
 };
 
@@ -64,8 +64,8 @@ export class UserStore {
 
       const result = await conn.query(sql, [
         u.login,
-        u.firstName,
-        u.lastName,
+        u.first_name,
+        u.last_name,
         hash,
       ]);
 
