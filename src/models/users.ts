@@ -131,6 +131,8 @@ export class UserStore {
 
       if (bcrypt.compareSync(password + pepper, user.password_hash)) {
         // check if provided password and pepper match password_hash stored in DB
+
+        user.token = bcrypt.hashSync(user.passwordHash + pepper, saltRounds);
         return user;
       }
     }
