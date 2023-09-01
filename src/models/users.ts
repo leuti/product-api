@@ -126,12 +126,15 @@ export class UserStore {
 
     const result = await conn.query(sql, [login]);
 
-    if (result.rows.length) {
-      const user = result.rows[0];
+    if (!result.rows.length) {
+      // No user found with the provided login
+      throw new Error('No user found with the given login credentials.');
+    }
 
+    const user = result.rows[0];
+    if (result.rows.length) {
       if (bcrypt.compareSync(password + pepper, user.password_hash)) {
         // check if provided password and pepper match password_hash stored in DB
-
         user.token = bcrypt.hashSync(user.passwordHash + pepper, saltRounds);
         return user;
       }

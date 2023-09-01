@@ -47,13 +47,22 @@ const create = async (req: Request, res: Response) => {
 
   try {
     const newUser = await store.create(user);
-    var token = jwt.sign({ user: newUser }, process.env.TOKEN_SECRET as string);
-    res.json({
-      login: newUser.login,
-      firstName: newUser.first_name,
-      lastName: newUser.last_name,
-      token: token,
-    });
+    console.log(`newUser: ${JSON.stringify(newUser)}`);
+    try {
+      var token = jwt.sign(
+        {
+          id: newUser.id,
+          login: newUser.login,
+          firstName: newUser.first_name,
+          lastName: newUser.last_name,
+        },
+        process.env.TOKEN_SECRET as string
+      );
+      res.json(token);
+    } catch (jwtError) {
+      console.error('Error signing the JWT', jwtError);
+      res.status(500).json({ error: 'Internal server error' });
+    }
   } catch (err: any) {
     res.status(400).json({ error: err.message }); // Return error message as JSON
   }
@@ -82,8 +91,29 @@ const authenticate = async (_req: Request, res: Response) => {
   };
   try {
     const u = await store.authenticate(user.login, user.passwordHash);
-    res.json(u);
+    console.log(`Authenticated user: ${JSON.stringify(u)}`);
+
+    if (u === null) {
+      throw new Error('Authentication failed');
+    }
+    try {
+      var token = jwt.sign(
+        {
+          id: u.id,
+          login: u.login,
+          firstName: u.first_name,
+          lastName: u.last_name,
+        },
+        process.env.TOKEN_SECRET as string
+      );
+      console.log(`Authentication successful: u = ${JSON.stringify(u)}`);
+      res.json(token);
+    } catch (jwtError) {
+      console.error('Error signing the JWT', jwtError);
+      res.status(500).json({ error: 'Internal server error' });
+    }
   } catch (err: any) {
+    console.log(`Authentication failed`);
     res.status(401).json({ error: err.message }); // Return error message as JSON
   }
 };
