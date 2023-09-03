@@ -64,7 +64,12 @@ const create = async (req: Request, res: Response) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   } catch (err: any) {
-    res.status(400).json({ error: err.message }); // Return error message as JSON
+    // Check if user already exists
+    if (err.message === 'UserExists') {
+      res.status(409).json({ error: 'User with this login already exists.' });
+    } else {
+      res.status(400).json({ error: err.message }); // Return error message as JSON}
+    }
   }
 };
 
@@ -94,7 +99,9 @@ const authenticate = async (_req: Request, res: Response) => {
     console.log(`Authenticated user: ${JSON.stringify(u)}`);
 
     if (u === null) {
-      throw new Error('Authentication failed');
+      throw new Error('Authentication failed: user not found');
+      // const err: Error = new Error('Authentication failed');
+      // res.status(401).json({ error: err.message }); // Return error message as JSON
     }
     try {
       var token = jwt.sign(

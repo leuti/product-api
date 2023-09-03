@@ -57,9 +57,18 @@ export class UserStore {
   async create(u: User): Promise<User> {
     try {
       const conn = await Client.connect();
+
+      // Step 1: Check if users with given login already exists
+      const checkSql = 'SELECT * FROM users WHERE login=$1';
+      const checkResult = await conn.query(checkSql, [u.login]);
+      if (checkResult.rows.length > 0) {
+        conn.release();
+        throw new Error('UserExists');
+      }
+
+      // Step 2: if not, then insert the new user
       const sql =
         'INSERT INTO users (login, first_name, last_name, password_hash) VALUES ($1, $2, $3, $4) RETURNING *';
-
       const hash = bcrypt.hashSync(u.passwordHash + pepper, saltRounds);
 
       const result = await conn.query(sql, [
