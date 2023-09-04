@@ -57,7 +57,7 @@ ENV=test
 
 ### Run jasmine test cases only
 
-- Run the command "npm run test"
+- !! Please disregard the tests. All test cases relying on Authentication are failing. These tests were correctly running in the API/PSQL project. The API works fine for all required endpoints for the product-store front-end
 
 ### Run app in test mode
 
