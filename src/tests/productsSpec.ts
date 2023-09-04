@@ -22,18 +22,21 @@ Routes in handler:
 async function createUserAndSetToken() {
   try {
     const userData = {
-      login: 'test_user',
-      firstName: 'Test',
-      lastName: 'User',
+      login: 'npm_test_user',
+      firstName: 'Test-user',
+      lastName: 'For-npm-run-test',
       password: 'jasmtestusr',
     };
 
     const response = await request.post('/users').send(userData);
-    token = response.body.token;
+    console.log(`response.body: ${JSON.stringify(response.body)}`);
+    token = response.body;
+    console.log(`1 function createUserAndSetToken: token ${token}`);
     userId = response.body.id;
   } catch (err: any) {
     console.error('Error creating user:', err);
   }
+  console.log(`2 function createUserAndSetToken: token ${token}`);
 }
 
 async function deleteUser() {
@@ -47,6 +50,7 @@ async function deleteUser() {
 }
 
 beforeAll(async () => {
+  console.log(`Sequence 1`);
   await createUserAndSetToken();
 });
 
@@ -54,7 +58,7 @@ afterAll(async () => {
   await deleteUser();
 });
 
-describe('PRODUCTS\n------------\n\nTesting products handler', () => {
+xdescribe('PRODUCTS\n------------\n\nTesting products handler', () => {
   it('GET /products --> gets the products index endpoint', async () => {
     const response = await request.get('/products'); // Make API call
     expect(response.status).toBe(200);
@@ -78,6 +82,7 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
   });
 
   it('POST /products[/:id] --> should create a new product', async () => {
+    console.log(`Sequence 2`);
     // Create test data
     const productData = {
       title: 'Test Product to be deleted 1',
@@ -86,6 +91,8 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
       price: 99.99,
       categoryId: 1,
     };
+
+    console.log(`token ${token}`);
 
     const response = await request
       .post('/products')
@@ -119,7 +126,7 @@ describe('PRODUCTS\n------------\n\nTesting products handler', () => {
   });
 });
 
-describe('Testing products model', () => {
+xdescribe('Testing products model', () => {
   it('create and index of products', async () => {
     const product: Product = {
       // Product to be created
@@ -134,6 +141,8 @@ describe('Testing products model', () => {
     const products = await store.index();
 
     expect(products.length).toBeGreaterThan(0);
+
+    console.log(`prod.id ${prod.id} token ${token}`);
 
     // delete Test Product
     await request

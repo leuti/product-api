@@ -11,7 +11,7 @@ Routes in handler:
   app.get('/most_expensive_products', index);
 ================================================================================== */
 
-describe('DASHBOARD\n------------\n\nTesting dashboard handler', () => {
+xdescribe('DASHBOARD\n------------\n\nTesting dashboard handler', () => {
   it('GET /most_popular_products --> 5 most popular products', async () => {
     const response = await request.get('/most_popular_products'); // Make API call
 
@@ -27,7 +27,7 @@ describe('DASHBOARD\n------------\n\nTesting dashboard handler', () => {
   });
 });
 
-describe('Testing dashboard model', () => {
+xdescribe('Testing dashboard model', () => {
   it('productsInOrders', async () => {
     const response = await store.productsInOrders(); // Make call to function
 

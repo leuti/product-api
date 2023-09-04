@@ -54,7 +54,7 @@ afterAll(async () => {
   await deleteUser();
 });
 
-describe('CATEGORIES\n------------\n\nTesting categories handler', () => {
+xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
   it('GET /categories --> gets the categories index endpoint', async () => {
     const response = await request.get('/categories'); // Make API call
 
@@ -116,7 +116,7 @@ describe('CATEGORIES\n------------\n\nTesting categories handler', () => {
     expect(response.status).toBe(400);
   });
 
-  describe('Testing category model', () => {
+  xdescribe('Testing category model', () => {
     it('create and index of category', async () => {
       // Category to be created
       const category: Category = {

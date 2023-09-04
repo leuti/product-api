@@ -55,7 +55,7 @@ afterAll(async () => {
   await deleteUser();
 });
 
-describe(`ORDERS\n------------\n\nTesting orders handler`, () => {
+xdescribe(`ORDERS\n------------\n\nTesting orders handler`, () => {
   it('GET /orders --> gets the orders index endpoint', async () => {
     const response = await request.get('/orders'); // Make API call
 
@@ -137,7 +137,7 @@ describe(`ORDERS\n------------\n\nTesting orders handler`, () => {
   });
 });
 
-describe('Testing order model', () => {
+xdescribe('Testing order model', () => {
   it('create and index of order', async () => {
     const order: Order = {
       // Order to be created

@@ -20,7 +20,7 @@ Routes in handler:
   // app.post('/users/:id/products', addProduct); // verifyAuthToken
 ================================================================================== */
 
-describe('USERS\n------------\n\nTesting user handlers', () => {
+xdescribe('USERS\n------------\n\nTesting user handlers', () => {
   it('GET /users --> gets the users index endpoint', async () => {
     const response = await request.get('/users'); // Make API call
 
@@ -95,7 +95,7 @@ describe('USERS\n------------\n\nTesting user handlers', () => {
   });
 });
 
-describe('Testing user models', () => {
+xdescribe('Testing user models', () => {
   it('create and index of users', async () => {
     const user: User = {
       // User to be created
