@@ -100,8 +100,8 @@ describe('Testing user models', () => {
     const user: User = {
       // User to be created
       login: 'test',
-      firstName: 'Test',
-      lastName: 'Test',
+      first_name: 'Test',
+      last_name: 'Test',
       passwordHash: 'test123',
     };
     await store.create(user); // Create product in DB
@@ -115,8 +115,8 @@ describe('Testing user models', () => {
     const user: User = {
       // User to be created
       login: 'test',
-      firstName: 'Test',
-      lastName: 'Test',
+      first_name: 'Test',
+      last_name: 'Test',
       passwordHash: 'test123',
     };
     const usr = await store.create(user); // Create product in DB
@@ -134,8 +134,8 @@ describe('Testing user models', () => {
     const user: User = {
       // User to be created
       login: 'testmodel',
-      firstName: 'Test',
-      lastName: 'Test',
+      first_name: 'Test',
+      last_name: 'Test',
       passwordHash: 'test123',
     };
 

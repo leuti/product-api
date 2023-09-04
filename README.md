@@ -1,8 +1,10 @@
-# Storefront Backend Project
+# Product-Store Back-end
 
 ## Getting Started
 
-This repo contains a basic Node and Express app for a store
+The product-store is a Udacity project deliverable. It offers the basic functions of a webshop. This repo contains a basic Node and Express app serving as API.
+
+The product-store front-end can be downloaded here --> https://github.com/leuti/product-store.git
 
 ## Required modules
 
@@ -19,14 +21,14 @@ This application makes use of the following libraries:
 
 ## Steps to installation (details below)
 
-1. git clone https://github.com/leuti/udacity_api_proj.git
+1. git clone https://github.com/leuti/product-api.git
 2. Create .env file
 3. npm install
 4. docker compose up -d
 
 ### Download source and install locally
 
-git clone https://github.com/leuti/udacity_api_proj.git
+git clone https://github.com/leuti/product-api.git
 
 ### Create the following .env file in the root folder of this project (this information would normally not be exposed in a README file)
 
@@ -47,6 +49,7 @@ ENV=test
 
 ### Launch the docker file containing the psql database
 
+- Ensure that docker is installed locally
 - Run the following command "docker compose up -d"
 - The psql server will start on port 5432
 
