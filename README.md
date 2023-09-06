@@ -25,6 +25,7 @@ This application makes use of the following libraries:
 2. Create .env file
 3. npm install
 4. docker compose up -d
+5. npm run test
 
 ### Download source and install locally
 
