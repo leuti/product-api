@@ -24,7 +24,7 @@ This application makes use of the following libraries:
 1. git clone https://github.com/leuti/product-api.git
 2. Create .env file
 3. npm install
-4. docker compose up -d
+4. docker compose up -d (step not required anymore as db is hosted on aws)
 5. npm run test
 
 ### Download source and install locally

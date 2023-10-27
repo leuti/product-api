@@ -4,7 +4,6 @@ import { Pool } from 'pg';
 dotenv.config();
 
 const {
-  POSTGRES_HOST,
   POSTGRES_DEV_DB,
   POSTGRES_TEST_DB,
   POSTGRES_USER,
@@ -14,10 +13,12 @@ const {
 
 let Client: Pool;
 
+const AWS_RDS_ENDPOINT = 'database-1.ch67ubfskttk.eu-west-3.rds.amazonaws.com';
+
 if (ENV?.trim() == 'test') {
   // trim is used to ensure trailing spaces are removed
   Client = new Pool({
-    host: POSTGRES_HOST,
+    host: AWS_RDS_ENDPOINT, // my aws rds endpoint
     database: POSTGRES_TEST_DB,
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
@@ -27,7 +28,7 @@ if (ENV?.trim() == 'test') {
   );
 } else {
   Client = new Pool({
-    host: POSTGRES_HOST,
+    host: AWS_RDS_ENDPOINT, // my aws rds endpoint
     database: POSTGRES_DEV_DB,
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
