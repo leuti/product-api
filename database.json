@@ -1,16 +1,16 @@
 {
   "dev": {
     "driver": "pg",
-    "host": "127.0.0.1",
-    "database": { "ENV": "POSTGRES_DEV_DB" },
-    "user": { "ENV": "POSTGRES_USER" },
-    "password": { "ENV": "POSTGRES_PASSWORD" }
+    "host": "database-1.ch67ubfskttk.eu-west-3.rds.amazonaws.com",
+    "database": "shopping_dev",
+    "user": "shopping_user",
+    "password": "password123"
   },
   "test": {
     "driver": "pg",
-    "host": "127.0.0.1",
-    "database": { "ENV": "POSTGRES_TEST_DB" },
-    "user": { "ENV": "POSTGRES_USER" },
-    "password": { "ENV": "POSTGRES_PASSWORD" }
+    "host": "database-1.ch67ubfskttk.eu-west-3.rds.amazonaws.com",
+    "database": "shopping_test",
+    "user": "shopping_user",
+    "password": "password123"
   }
 }
