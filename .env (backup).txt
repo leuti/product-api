@@ -1,0 +1,9 @@
+POSTGRES_DB=postgres
+POSTGRES_DEV_DB=shopping_dev
+POSTGRES_TEST_DB=shopping_test
+POSTGRES_USER=shopping_user
+POSTGRES_PASSWORD=password123
+BCRYPT_PASSWORD=29(/%&!Hkyiz1&
+SALT_ROUNDS=10
+TOKEN_SECRET=KasparIstGross_test
+ENV=dev
