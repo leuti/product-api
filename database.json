@@ -2,9 +2,9 @@
   "dev": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
-    "database": "postgres",
-    "user": "postgres",
-    "password": "postgres",
+    "database": "shopping_dev",
+    "user": "shopping_user",
+    "password": "password123",
     "ssl": {
       "rejectUnauthorized": false,
       "ca": "../sslcerts/eu-central-1-bundle.pem"
@@ -13,9 +13,9 @@
   "test": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
-    "database": "postgres",
-    "user": "postgres",
-    "password": "postgres",
+    "database": "shopping_test",
+    "user": "shopping_user",
+    "password": "password123",
     "ssl": {
       "rejectUnauthorized": false,
       "ca": "../sslcerts/eu-central-1-bundle.pem"
