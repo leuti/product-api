@@ -94,3 +94,11 @@ run "npm run test" - just to create the necessary test data
 ### psql
 
 - login (e.g. via Docker Terminal): psql -h localhost -d shopping_test -U shopping_user -p 5432
+
+## Deployment
+
+- Save all changes. but don't commit yet
+- Run "npm run zip" (run in git bash) --> will create new app.zip file
+- Select the Elastic Beanstalk environment and press the "Upload and deploy" button
+- Select the app.zip file just created --> Deploy
+- Commit changes (add version from EB as reference)
