@@ -34,7 +34,6 @@ git clone https://github.com/leuti/product-api.git
 
 ### Create the following .env file in the root folder of this project (this information would normally not be exposed in a README file)
 
-POSTGRES_HOST=127.0.0.1
 POSTGRES_DB=postgres
 POSTGRES_DEV_DB=shopping_dev
 POSTGRES_TEST_DB=shopping_test
