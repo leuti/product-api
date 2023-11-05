@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "db-migrate up && node dist/server.js",
+    "start": "db-migrate up && node server.js",
     "start-compiled": "npx tsc && db-migrate up && node dist/server.js",
     "start-only": "npx tsc && node dist/server.js",
     "start-dbm": "npx tsc && db-migrate up",
