@@ -14,7 +14,7 @@
     "test:drop": "npx tsc && db-migrate --env test up && set ENV=test && jasmine && db-migrate --env test reset",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "zip": "rm -rf dist && npm run build && cp -r package.json database.json tsconfig.json sslcerts dist/ && cd dist && zip -r -D ../app.zip *"
+    "zip": "rm -rf dist && npm run build && cp -r package.json database.json tsconfig.json migrations sslcerts dist/ && cd dist && zip -r -D ../app.zip *"
   },
   "author": "Daniel Leutwyler",
   "license": "ISC",
