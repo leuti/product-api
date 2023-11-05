@@ -18,6 +18,7 @@ This application makes use of the following libraries:
 - bcrypt to hash and compare passwords
 - jasmine from npm for testing (incl. supertest for API testing)
 - cross-env to start app in different environments independent of the OS
+- aws rds psql database
 
 ## Steps to installation (details below)
 

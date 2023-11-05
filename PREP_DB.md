@@ -24,3 +24,4 @@ Goal: The shopping_user must be owner of both databases and the public schema.
 # Other Tasks
 
 - Remove tsconfig.json from start script
+- Remove POSTGRES_HOST from .env
