@@ -18,3 +18,5 @@ Goal: The shopping_user must be owner of both databases and the public schema.
 
 - Change OWNER of schema 'public'
   ALTER DEFAULT PRIVILEGES IN SCHEMA public FOR ROLE shopping_user GRANT ALL ON TABLES TO shopping_user;
+
+## Create the Elastic beanstalk environment in aws

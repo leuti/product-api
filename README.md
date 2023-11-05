@@ -1,4 +1,4 @@
-# Product-Store Back-end
+# Product-Store Back-end (hosted on aws)
 
 ## Getting Started
 

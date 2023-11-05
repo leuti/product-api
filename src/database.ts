@@ -16,7 +16,7 @@ let Client: Pool;
 
 const sslOptions = {
   rejectUnauthorized: false, // Set to true if you want to verify the certificate
-  ca: '../sslcerts/eu-central-1-bundle.pem',
+  ca: './sslcerts/eu-central-1-bundle.pem',
   // cert: '',
   // key: '../sslcerts/private-key.pem',
 };

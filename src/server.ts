@@ -12,8 +12,11 @@ import dashboardRoutes from './handlers/dashboard';
 import routes from './routes/index'; // routes for the images
 
 const app: express.Application = express();
-const address: string = '0.0.0.0:3000';
+// const address: string = 'Shopping-api-env.eba-8rhccdks.eu-central-1.elasticbeanstalk.com';
+//const address: string = '0.0.0.0:3000';
 // const port: string = '3000';
+
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,8 +32,8 @@ productRoutes(app);
 orderRoutes(app);
 dashboardRoutes(app);
 
-app.listen(3000, function () {
-  console.log(`starting app on: ${address}`);
+app.listen(port, function () {
+  console.log(`starting app on ${port}`);
 });
 
 export default app;
