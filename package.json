@@ -15,7 +15,8 @@
     "jasmine": "jasmine",
     "build": "rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",
     "zip": "npm run build && cd dist && zip -r -D ../app.zip *",
-    "deploy": "chmod +x ./bin/deploy.sh && ./bin/deploy.sh"
+    "deploy": "chmod +x ./bin/deploy.sh && ./bin/deploy.sh",
+    "dummy": "mzmz"
   },
   "author": "Daniel Leutwyler",
   "license": "ISC",
