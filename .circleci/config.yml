@@ -15,10 +15,6 @@ jobs:
         name: Install API
         command: |
           npm run install-api
-      - run:
-        name: Build API
-        command: |
-          npm run build
   test:
     docker:
       - image: cimg/base:2023.03
