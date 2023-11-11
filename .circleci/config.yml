@@ -12,6 +12,9 @@ jobs:
       - node/install
       - checkout
       - run:
+          name: List Files
+          command: ls -la
+      - run:
         name: Install API
         command: |
           npm run install-api
