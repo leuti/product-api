@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "install": "npm install",
+    "install-api": "npm install",
     "start": "db-migrate up && node server.js",
     "build": "rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",
     "zip": "npm run build && cd dist && zip -r -D ../app.zip *",
