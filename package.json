@@ -12,9 +12,10 @@
     "test-ts": "jasmine-ts",
     "test": "npx tsc && db-migrate --env test up && set ENV=test && jasmine",
     "test:drop": "npx tsc && db-migrate --env test up && set ENV=test && jasmine && db-migrate --env test reset",
-    "build": "npx tsc",
     "jasmine": "jasmine",
-    "zip": "rm -rf dist && npm run build && cp -r package.json database.json migrations sslcerts assets dist/ && cd dist && zip -r -D ../app.zip *"
+    "build": "rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",
+    "zip": "npm run build && cd dist && zip -r -D ../app.zip *",
+    "dummy": "only added to trigger new version. gag"
   },
   "author": "Daniel Leutwyler",
   "license": "ISC",

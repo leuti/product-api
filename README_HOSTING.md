@@ -21,4 +21,10 @@ Goal: The shopping_user must be owner of both databases and the public schema.
 
 ## Create the Elastic beanstalk environment in aws
 
-# Tasks
+## Deployment
+
+- Save all changes. but don't commit yet
+- Run "npm run zip" (run in git bash) --> will create new app.zip file
+- Select the Elastic Beanstalk environment and press the "Upload and deploy" button
+- Select the app.zip file just created --> Deploy
+- Commit changes (add version from EB as reference)

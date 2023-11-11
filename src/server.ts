@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/img', routes);
 
 app.get('/', function (req: Request, res: Response) {
-  res.send('Hello World!');
+  res.send('Welcome to the product shop! This is my first eb deployment');
 });
 
 categoryRoutes(app);
