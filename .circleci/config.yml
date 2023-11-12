@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
-  eb: circleci/aws-elastic-beanstalk@2.0.1
+  eb: circleci/aws-elastic-beanstalk@1.0.0
 
 # Define the jobs we want to run for this project
 jobs:
@@ -39,8 +39,11 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
+          name: Install Elastic Beanstalk CLI
+          command: npm install -g awsebcli
+      - run:
           name: Deploy to AWS EB
-          command: aws-eb/deploy
+          command: npm run deploy
 
 # Orchestrate our job run sequence
 workflows:
@@ -48,4 +51,7 @@ workflows:
     jobs:
       - test
       - build
-      - deploy
+      - deploy:
+          requires:
+            - test
+            - build
