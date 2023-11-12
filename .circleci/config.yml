@@ -44,10 +44,15 @@ jobs:
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
             tar -xzf aws-elastic-beanstalk-cli-setup.tar.gz
             cd aws-elastic-beanstalk-cli-setup-master/scripts
-            python ebcli_installer.py
+            apt-get update
+            apt-get install -y python3-pip python3-venv
+            python3 -m venv ebcli-venv
+            source ebcli-venv/bin/activate
+            pip install --upgrade pip
+            pip install awsebcli
       - run:
-          name: Deploy to AWS EB
-          command: npm run deploy
+          name: Run Elastic Beanstalk CLI Installer
+          command: python ebcli_installer.py
 
 # Orchestrate our job run sequence
 workflows:
