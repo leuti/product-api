@@ -7,13 +7,11 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
-# assets
-# assets/**
+## Eigene
 
-# ssl certificates
-# sslcerts
-
-CODEOWNERS
+# dist/ # darf nicht exkludiert werden, das das Deployment via github repo --> circleci --> aws eb läuft
+app.zip
+src/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -99,9 +97,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist/
-www
-app.zip
 
 # Gatsby files
 .cache/
