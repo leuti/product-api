@@ -6,3 +6,5 @@ src/ # Quelldaten müssen nicht auf den Server
 .git/
 .gitignore
 docs/
+
+CODEOWNERS
