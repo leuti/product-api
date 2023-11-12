@@ -40,7 +40,10 @@ jobs:
           pkg-manager: npm
       - run:
           name: Install Elastic Beanstalk CLI
-          command: npm install -g awsebcli
+          command: |
+            wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
+            tar -xzf aws-elastic-beanstalk-cli-setup.tar.gz
+            ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
       - run:
           name: Deploy to AWS EB
           command: npm run deploy
