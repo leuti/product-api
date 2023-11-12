@@ -43,7 +43,9 @@ jobs:
           command: |
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
             tar -xzf aws-elastic-beanstalk-cli-setup.tar.gz
-            ./aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
+            cd aws-elastic-beanstalk-cli-setup-master/scripts
+            chmod +x ebcli_installer.py
+            ./ebcli_installer.py
       - run:
           name: Deploy to AWS EB
           command: npm run deploy
