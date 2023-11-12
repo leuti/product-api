@@ -56,11 +56,6 @@ jobs:
           command: |
             pip install --user virtualenv
       - run:
-          name: Set AWS credentials
-          command: |
-            aws configure set aws_access_key_id AKIAQN4PD4RKFHHDHRS3
-            aws configure set aws_secret_access_key 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
-      - run:
           name: Set AWS default region
           command: aws configure set region eu-central-1
       - run:
