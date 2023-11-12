@@ -46,9 +46,9 @@ jobs:
             pip install --user awsebcli
             export PATH=$HOME/.local/bin:$PATH
       - run:
-        name: Install virtualenv
-        command: |
-          pip install --user virtualenv
+          name: Install virtualenv
+          command: |
+            pip install --user virtualenv
       - run:
           name: Install Elastic Beanstalk CLI
           command: |
