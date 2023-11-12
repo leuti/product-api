@@ -39,6 +39,13 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
+          name: Install pip
+          command: |
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python get-pip.py --user
+            pip install --user awsebcli
+            export PATH=$HOME/.local/bin:$PATH
+      - run:
           name: Install Elastic Beanstalk CLI
           command: |
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
