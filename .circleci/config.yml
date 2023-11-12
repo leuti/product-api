@@ -39,11 +39,8 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          name: Install Elastic Beanstalk CLI
-          command: npm install -g awsebcli
-      - run:
           name: Deploy to AWS EB
-          command: npm run deploy
+          command: aws-eb/deploy
 
 # Orchestrate our job run sequence
 workflows:
