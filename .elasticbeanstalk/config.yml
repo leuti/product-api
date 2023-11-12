@@ -1,0 +1,19 @@
+branch-defaults:
+  main:
+    environment: Shop1-env
+environment-defaults:
+  Shop1-env:
+    branch: null
+    repository: null
+global:
+  application_name: shop
+  default_ec2_keyname: aws-ec2
+  default_platform: Node.js 18 running on 64bit Amazon Linux 2023
+  default_region: eu-central-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  sc: git
+  workspace_type: Application

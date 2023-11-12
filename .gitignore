@@ -97,7 +97,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/
 www
 app.zip
 
@@ -141,6 +141,6 @@ app.zip
 
 
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# .elasticbeanstalk/*
+# !.elasticbeanstalk/*.cfg.yml
+# !.elasticbeanstalk/*.global.yml

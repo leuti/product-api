@@ -54,7 +54,7 @@ afterAll(async () => {
   await deleteUser();
 });
 
-xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
+describe('CATEGORIES\n------------\n\nTesting categories handler', () => {
   it('GET /categories --> gets the categories index endpoint', async () => {
     const response = await request.get('/categories'); // Make API call
 
@@ -79,7 +79,7 @@ xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
     expect(response.status).toBe(400);
   });
 
-  it('POST /categories[/:id] --> should create a new category', async () => {
+  xit('POST /categories[/:id] --> should create a new category', async () => {
     // Create test data
     const categoryData = {
       name: 'Test Category',
@@ -97,7 +97,7 @@ xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
     expect(response.body.hasOwnProperty('id')).toBe(true);
   });
 
-  it('DELETE /categories[/:id] --> should delete test category', async () => {
+  xit('DELETE /categories[/:id] --> should delete test category', async () => {
     const response = await request
       .delete(`/categories/${categoryId}`)
       .set('Authorization', `Bearer ${token}`); // Pass the token in the headers
@@ -107,7 +107,7 @@ xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
     expect(response.body.hasOwnProperty('id')).toBe(true);
   });
 
-  it('DELETE /categories[/:id] (not existing) --> should return a 400 status if the category does not exist', async () => {
+  xit('DELETE /categories[/:id] (not existing) --> should return a 400 status if the category does not exist', async () => {
     const nonExistentId = '99999'; // To be a non-existent category ID
     const response = await request
       .delete(`/categories/${nonExistentId}`) // Make API call
@@ -116,7 +116,7 @@ xdescribe('CATEGORIES\n------------\n\nTesting categories handler', () => {
     expect(response.status).toBe(400);
   });
 
-  xdescribe('Testing category model', () => {
+  describe('Testing category model', () => {
     it('create and index of category', async () => {
       // Category to be created
       const category: Category = {
