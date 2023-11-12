@@ -55,7 +55,7 @@ jobs:
             pip install awsebcli
       - run:
           name: Run Elastic Beanstalk CLI Installer
-          command: python ebcli_installer.py
+          command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
 
 # Orchestrate our job run sequence
 workflows:
