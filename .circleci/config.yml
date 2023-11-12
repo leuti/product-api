@@ -46,6 +46,10 @@ jobs:
             pip install --user awsebcli
             export PATH=$HOME/.local/bin:$PATH
       - run:
+        name: Install virtualenv
+        command: |
+          pip install --user virtualenv
+      - run:
           name: Install Elastic Beanstalk CLI
           command: |
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
