@@ -10,19 +10,21 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-        pkg-manager: npm
+          pkg-manager: npm
       - run:
-        name: Run test
-        command: npm run test
+          name: Run test
+          command: npm run test
       - run:
-        name: Run build
-        command: ls -la
+          name: Run build
+          command: ls -la
   test:
     docker:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run: echo "this is the test job"
+      - run:
+          name: Echo Test Message
+          command: echo "this is the test job"
 
 # Orchestrate our job run sequence
 workflows:
