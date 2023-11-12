@@ -19,23 +19,23 @@ set -e
 # --------------------------------------
 
 # Führe den Build-Prozess aus (dein Skript hier eintragen)
-npm run build
+# npm run build
 
-echo "build completed now starting deployment..." 
+# echo "build completed now starting deployment..." 
 
 # Erstelle ein ZIP-Archiv des dist-Verzeichnisses
-cd dist
-zip -r ../app.zip .
-cd ..
+# cd dist
+# zip -r ../app.zip .
+# cd ..
 
-echo "Deployment archive created, starting deployment..."
+# echo "Deployment archive created, starting deployment..."
 
 # Deploye die Anwendung mit dem erstellten Archiv
-eb deploy --staged
+eb deploy # --staged
 
 echo "deployment completed"
 
 # Öffne die Anwendung im Browser
-eb open
+# eb open
 
-echo "Deployment abgeschlossen!"
+#echo "Deployment abgeschlossen!"
