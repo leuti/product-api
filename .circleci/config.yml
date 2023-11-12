@@ -44,8 +44,6 @@ jobs:
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
             tar -xzf aws-elastic-beanstalk-cli-setup.tar.gz
             cd aws-elastic-beanstalk-cli-setup-master/scripts
-            python3 -m venv ebcli-venv
-            source ebcli-venv/bin/activate
             pip install --upgrade pip
             pip install awsebcli
       - run:
