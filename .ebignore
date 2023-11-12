@@ -1,0 +1,7 @@
+node_modules/ # node modules ausschliessen, da diese auf dem Server neu installiert werden
+
+src/ # Quelldaten müssen nicht auf den Server
+
+# Weitere Dateien / Verzeichnisse
+.git/
+.gitignore
