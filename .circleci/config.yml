@@ -60,6 +60,9 @@ jobs:
       - run:
           name: Run Elastic Beanstalk CLI Installer
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
+      - run:
+          name: Run deployoment
+          command: npm run deploy
 
 # Orchestrate our job run sequence
 workflows:
