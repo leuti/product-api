@@ -5,3 +5,4 @@ src/ # Quelldaten müssen nicht auf den Server
 # Weitere Dateien / Verzeichnisse
 .git/
 .gitignore
+docs/
