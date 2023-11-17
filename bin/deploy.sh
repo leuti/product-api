@@ -31,7 +31,8 @@ set -e
 # echo "Deployment archive created, starting deployment..."
 
 # Deploye die Anwendung mit dem erstellten Archiv
-eb deploy Shop1-env # --staged
+# eb deploy Shop1-env # --staged
+eb deploy Shop1-prod-env-env
 
 echo "deployment completed"
 
