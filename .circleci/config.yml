@@ -15,10 +15,14 @@ jobs:
       - node/install-packages: # uses the node Orb to install the Node.js-Pakete, using npm as package manager
           pkg-manager: npm
       - run:
-          name: Run test # runs the npm test script ("npx tsc && db-migrate up && jasmine")
+          name: Display ENV
+          command: |
+            echo "Content of ENV: $ENV"
+      - run:
+          name: Run test on dev # runs the npm test script ("npx tsc && db-migrate up && jasmine")
           command: npm run test
       - run:
-          name: Run build # runs the npm build script ("rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",)
+          name: Run build on dev # runs the npm build script ("rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",)
           command: npm run build
       - run:
           name: Install pip # installs pip package management for Python; required to install AWS Elastic Beanstalk CLI
@@ -44,7 +48,7 @@ jobs:
           name: Run Elastic Beanstalk CLI Installer # runs the Python install script
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
       - run:
-          name: Run deployoment # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
+          name: Run deploy on dev # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
           command: npm run deploy # runs "eb deploy"
 
   test_build_deploy_prod:
@@ -56,10 +60,14 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          name: Run test
+          name: Display ENV
+          command: |
+            echo "Content of ENV: $ENV"
+      - run:
+          name: Run test on PROD
           command: npm run test
       - run:
-          name: Run build
+          name: Run build on PROD
           command: npm run build
       - run:
           name: Install pip
@@ -84,7 +92,7 @@ jobs:
           name: Run Elastic Beanstalk CLI Installer
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
       - run:
-          name: Run deployoment
+          name: Run deploy on PROD
           command: npm run deploy
 
 # Orchestrate our job run sequence
