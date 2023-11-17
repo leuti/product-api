@@ -35,6 +35,7 @@ const productRoutes = (app) => {
 };
 const index = async (_req, res) => {
     try {
+        console.log(`products index reached`);
         const products = await store.index();
         const productsCamelCase = (0, utils_1.convertKeysToCamelCase)(products);
         res.json(productsCamelCase);
