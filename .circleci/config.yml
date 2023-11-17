@@ -54,7 +54,7 @@ jobs:
   test_build_deploy_prod:
     executor: node/default
     environment:
-      ENV: dev
+      ENV: prod
     steps:
       - checkout
       - node/install-packages:
