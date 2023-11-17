@@ -23,7 +23,9 @@ app.use(bodyParser.json());
 app.use('/img', routes);
 
 app.get('/', function (req: Request, res: Response) {
-  res.send('Welcome to the product shop! Deployment via circleCI working!');
+  res.send(
+    'DEV ENV ----- Welcome to the product shop! Deployment via circleCI working!'
+  );
 });
 
 categoryRoutes(app);
