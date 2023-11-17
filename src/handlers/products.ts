@@ -15,6 +15,7 @@ const productRoutes = (app: express.Application) => {
 
 const index = async (_req: Request, res: Response) => {
   try {
+    console.log(`products index reached`);
     const products = await store.index();
     const productsCamelCase = convertKeysToCamelCase(products);
     res.json(productsCamelCase);

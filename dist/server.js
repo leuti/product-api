@@ -23,7 +23,7 @@ app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 app.use('/img', index_1.default);
 app.get('/', function (req, res) {
-    res.send('Welcome to the product shop! This is my first eb deployment');
+    res.send('Welcome to the product shop! Deployment via circleCI working!');
 });
 (0, categories_1.default)(app);
 (0, users_1.default)(app);
