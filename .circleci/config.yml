@@ -7,32 +7,33 @@ orbs:
 # Define the jobs we want to run for this project
 jobs:
   test_build_deploy_dev:
-    executor: node/default
-    environment:
+    executor: node/default # defines the execution env --> Standard-Node.js env
+    environment: # sets the environment variable to dev
       ENV: dev
     steps:
-      - checkout
-      - node/install-packages:
+      - checkout # copies the code from the git repo to build env
+      - node/install-packages: # uses the node Orb to install the Node.js-Pakete, using npm as package manager
           pkg-manager: npm
       - run:
-          name: Run test
+          name: Run test # runs the npm test script ("npx tsc && db-migrate up && jasmine")
           command: npm run test
       - run:
-          name: Run build
+          name: Run build # runs the npm build script ("rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",)
           command: npm run build
       - run:
-          name: Install pip
+          name: Install pip # installs pip package management for Python; required to install AWS Elastic Beanstalk CLI
+
           command: |
             curl -O https://bootstrap.pypa.io/get-pip.py
             python get-pip.py --user
             pip install --user awsebcli
             export PATH=$HOME/.local/bin:$PATH
       - run:
-          name: Install virtualenv
+          name: Install virtualenv # installs virtualenv, a tool to create an isolated Python env
           command: |
             pip install --user virtualenv
       - run:
-          name: Install Elastic Beanstalk CLI
+          name: Install Elastic Beanstalk CLI # installs EB CLI
           command: |
             wget https://github.com/aws/aws-elastic-beanstalk-cli-setup/archive/master.tar.gz -O aws-elastic-beanstalk-cli-setup.tar.gz
             tar -xzf aws-elastic-beanstalk-cli-setup.tar.gz
@@ -40,11 +41,11 @@ jobs:
             pip install --upgrade pip
             pip install awsebcli
       - run:
-          name: Run Elastic Beanstalk CLI Installer
+          name: Run Elastic Beanstalk CLI Installer # runs the Python install script
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
       - run:
-          name: Run deployoment
-          command: npm run deploy
+          name: Run deployoment # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
+          command: npm run deploy # runs "eb deploy"
 
   test_build_deploy_prod:
     executor: node/default
