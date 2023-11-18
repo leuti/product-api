@@ -49,7 +49,10 @@ jobs:
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
       - run:
           name: Run deploy on dev # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
-          command: npm run deploy # runs "eb deploy"
+          command: |
+            eb list
+            eb status
+            npm run deploy # runs "eb deploy"
 
   test_build_deploy_prod:
     executor: node/default
