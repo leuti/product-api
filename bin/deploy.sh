@@ -28,7 +28,10 @@ set -e
 # zip -r ../app.zip .
 # cd ..
 
-# echo "Deployment archive created, starting deployment..."
+echo "Starting deployment..."
+
+eb list
+eb status
 
 # Prüft den Inhalt der Variable ENV
 if [ "$ENV" == "dev" ]; then
