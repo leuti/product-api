@@ -53,6 +53,9 @@ jobs:
             eb list
             eb status
       - run:
+          name: Run db-migrate # runs the db-migrate
+          command: db-migrate up --env dev # run db-migrate (withn the deploy.sh db-migrate does not recognise prod env)
+      - run:
           name: Run deploy on dev # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
           command: npm run deploy # runs "eb deploy"
 
@@ -96,6 +99,9 @@ jobs:
       - run:
           name: Run Elastic Beanstalk CLI Installer
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
+      - run:
+          name: Run db-migrate # runs the db-migrate
+          command: db-migrate up --env prod # run db-migrate (withn the deploy.sh db-migrate does not recognise prod env)
       - run:
           name: Run deploy on PROD
           command: npm run deploy
