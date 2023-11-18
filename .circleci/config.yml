@@ -20,7 +20,7 @@ jobs:
             echo "Content of ENV: $ENV"
       - run:
           name: Run test on dev # runs the npm test script ("npx tsc && db-migrate up && jasmine")
-          command: npm run test
+          command: npm run test:dev
       - run:
           name: Run build on dev # runs the npm build script ("rm -rf dist && npx tsc && cp -r package.json database.json migrations sslcerts assets dist/",)
           command: npm run build
@@ -53,9 +53,6 @@ jobs:
             eb list
             eb status
       - run:
-          name: Run db-migrate # runs the db-migrate
-          command: db-migrate up --env dev # run db-migrate (withn the deploy.sh db-migrate does not recognise prod env)
-      - run:
           name: Run deploy on dev # runs the npm deploy script ("chmod +x ./bin/deploy.sh && ./bin/deploy.sh")
           command: npm run deploy # runs "eb deploy"
 
@@ -73,7 +70,7 @@ jobs:
             echo "Content of ENV: $ENV"
       - run:
           name: Run test on PROD
-          command: npm run test
+          command: npm run test:prod
       - run:
           name: Run build on PROD
           command: npm run build
@@ -99,9 +96,6 @@ jobs:
       - run:
           name: Run Elastic Beanstalk CLI Installer
           command: python aws-elastic-beanstalk-cli-setup-master/scripts/ebcli_installer.py
-      - run:
-          name: Run db-migrate # runs the db-migrate
-          command: db-migrate up --env prod # run db-migrate (withn the deploy.sh db-migrate does not recognise prod env)
       - run:
           name: Run deploy on PROD
           command: npm run deploy

@@ -10,7 +10,7 @@
       "ca": "../sslcerts/eu-central-1-bundle.pem"
     }
   },
-  "testx": {
+  "test": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
     "database": "shopping_test",
@@ -21,7 +21,7 @@
       "ca": "../sslcerts/eu-central-1-bundle.pem"
     }
   },
-  "prodx": {
+  "prod": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
     "database": "shopping_test",
