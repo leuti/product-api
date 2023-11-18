@@ -2,12 +2,12 @@ branch-defaults:
   dev:
     environment: Shop1-env
   main:
-    environment: Shop1-prod-env
+    environment: Shop-prod-env
 environment-defaults:
   Shop1-env:
     branch: null
     repository: null
-  Shop1-prod-env:
+  Shop-prod-env:
     branch: null
     repository: null
 global:
