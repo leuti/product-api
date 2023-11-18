@@ -40,7 +40,7 @@ if [ "$ENV" == "dev" ]; then
     echo "deployment for $ENV completed"
 elif [ "$ENV" == "prod" ]; then
     # Führt aus, wenn ENV 'prod' ist
-    eb deploy Shop1-prod-env-env
+    eb deploy Shop1-prod-env
     echo "deployment for $ENV completed"
 else
     echo "Ungültiger Wert für ENV. Bitte 'dev' oder 'prod' verwenden."
