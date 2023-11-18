@@ -24,7 +24,7 @@ app.use('/img', routes);
 
 app.get('/', function (req: Request, res: Response) {
   res.send(
-    'PROD ENV ----- Welcome to the product shop! Deployment via circleCI working!'
+    'DEV ENV ----- Welcome to the product shop! Deployment via circleCI working!'
   );
 });
 
