@@ -22,7 +22,7 @@ const sslOptions = {
 };
 
 const connectionString = `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${AWS_RDS_ENDPOINT}:5432/${
-  ENV === 'test' ? POSTGRES_TEST_DB : POSTGRES_DEV_DB
+  ENV === 'prod' ? POSTGRES_TEST_DB : POSTGRES_DEV_DB
 }`;
 
 Client = new Pool({
