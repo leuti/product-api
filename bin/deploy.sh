@@ -36,10 +36,12 @@ eb status
 # Prüft den Inhalt der Variable ENV
 if [ "$ENV" == "dev" ]; then
     # Führt aus, wenn ENV 'dev' ist
+    db-migrate-up
     eb deploy Shop1-env
     echo "deployment for $ENV completed"
 elif [ "$ENV" == "prod" ]; then
     # Führt aus, wenn ENV 'prod' ist
+    db-migrate-up
     eb deploy Shop-prod-env
     echo "deployment for $ENV completed"
 else
