@@ -33,7 +33,7 @@ Client = new Pool({
 
 console.log(
   `Starting database: ENV=[${ENV}] | database = ${
-    ENV === 'test' ? POSTGRES_TEST_DB : POSTGRES_DEV_DB
+    ENV === 'prod' ? POSTGRES_TEST_DB : POSTGRES_DEV_DB
   }  ConnectionString=${connectionString}`
 );
 
