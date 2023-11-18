@@ -30,11 +30,18 @@ set -e
 
 # echo "Deployment archive created, starting deployment..."
 
-# Deploye die Anwendung mit dem erstellten Archiv
-# eb deploy Shop1-env # --staged
-eb deploy Shop1-prod-env-env
-
-echo "deployment completed"
+# Prüft den Inhalt der Variable ENV
+if [ "$ENV" == "dev" ]; then
+    # Führt aus, wenn ENV 'dev' ist
+    eb deploy Shop1-env
+    echo "deployment for $ENV completed"
+elif [ "$ENV" == "prod" ]; then
+    # Führt aus, wenn ENV 'prod' ist
+    eb deploy Shop1-prod-env
+    echo "deployment for $ENV completed"
+else
+    echo "Ungültiger Wert für ENV. Bitte 'dev' oder 'prod' verwenden."
+fi
 
 # Öffne die Anwendung im Browser
 # eb open
