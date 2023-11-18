@@ -28,6 +28,8 @@ if (ENV === 'prod') {
   database = POSTGRES_DEV_DB || ''; // Fallback zu leerem String, falls undefined
 }
 
+console.log(`database is ${database}`);
+
 const connectionString = `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${AWS_RDS_ENDPOINT}:5432/${database}`;
 
 Client = new Pool({
