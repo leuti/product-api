@@ -23,12 +23,11 @@ const sslOptions = {
 
 let database: string = ''; // Verwende 'string' anstelle von 'String'
 if (ENV === 'prod') {
-  database = POSTGRES_TEST_DB || ''; // Fallback zu leerem String, falls undefined
+  // database = POSTGRES_TEST_DB || ''; // Fallback zu leerem String, falls undefined
+  database = 'shopping_test';
 } else {
   database = POSTGRES_DEV_DB || ''; // Fallback zu leerem String, falls undefined
 }
-
-console.log(`database is ${database}`);
 
 const connectionString = `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${AWS_RDS_ENDPOINT}:5432/${database}`;
 
@@ -38,10 +37,8 @@ Client = new Pool({
   ssl: sslOptions, // Enable SSL for all environments*/
 });
 
-console.log(`ENV: ${ENV} | `);
-
 console.log(
-  `Starting database: ENV=[${ENV}] | database = ${database}  ConnectionString=${connectionString}`
+  `Starting database: ENV=[${ENV}] | database = [${database}] | ConnectionString=${connectionString}`
 );
 
 export default Client;
