@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
 dotenv_1.default.config();
-const { AWS_RDS_ENDPOINT, POSTGRES_DEV_DB, POSTGRES_TEST_DB, POSTGRES_USER, POSTGRES_PASSWORD, ENV, } = process.env;
+const { AWS_RDS_ENDPOINT, POSTGRES_DEV_DB, POSTGRES_TEST_DB, POSTGRES_PROD_DB, POSTGRES_USER, POSTGRES_PASSWORD, ENV, } = process.env;
 let Client;
 const sslOptions = {
     rejectUnauthorized: false,
@@ -16,6 +16,9 @@ const sslOptions = {
 };
 let database = ''; // Verwende 'string' anstelle von 'String'
 if (ENV === 'prod') {
+    database = POSTGRES_PROD_DB || ''; // Fallback zu leerem String, falls undefined
+}
+else if (ENV === 'test') {
     database = POSTGRES_TEST_DB || ''; // Fallback zu leerem String, falls undefined
 }
 else {
@@ -27,6 +30,5 @@ Client = new pg_1.Pool({
     connectionString: connectionString,
     ssl: sslOptions, // Enable SSL for all environments*/
 });
-console.log(`ENV: ${ENV} | `);
-console.log(`Starting database: ENV=[${ENV}] | database = ${database}  ConnectionString=${connectionString}`);
+console.log(`Starting database: ENV=[${ENV}] | database = [${database}] | ConnectionString=${connectionString}`);
 exports.default = Client;

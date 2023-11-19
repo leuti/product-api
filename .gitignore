@@ -9,7 +9,7 @@ lerna-debug.log*
 
 ## Eigene
 
-# dist/ # darf nicht exkludiert werden, das das Deployment via github repo --> circleci --> aws eb läuft
+dist/ 
 app.zip
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
