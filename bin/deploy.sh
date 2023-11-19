@@ -28,7 +28,7 @@ set -e
 # zip -r ../app.zip .
 # cd ..
 
-echo "Starting deployment..."
+echo "Starting deployment on environment $ENV ..."
 
 eb list
 eb status
