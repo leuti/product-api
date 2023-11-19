@@ -7,6 +7,7 @@ const {
   AWS_RDS_ENDPOINT,
   POSTGRES_DEV_DB,
   POSTGRES_TEST_DB,
+  POSTGRES_PROD_DB,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
   ENV,
@@ -23,8 +24,9 @@ const sslOptions = {
 
 let database: string = ''; // Verwende 'string' anstelle von 'String'
 if (ENV === 'prod') {
-  // database = POSTGRES_TEST_DB || ''; // Fallback zu leerem String, falls undefined
-  database = 'shopping_test';
+  database = POSTGRES_PROD_DB || ''; // Fallback zu leerem String, falls undefined
+} else if (ENV === 'test') {
+  database = POSTGRES_TEST_DB || ''; // Fallback zu leerem String, falls undefined
 } else {
   database = POSTGRES_DEV_DB || ''; // Fallback zu leerem String, falls undefined
 }

@@ -2,7 +2,7 @@
   "dev": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
-    "database": "shopping_test",
+    "database": "shopping_dev",
     "user": "shopping_user",
     "password": "password123",
     "ssl": {
@@ -24,7 +24,7 @@
   "prod": {
     "driver": "pg",
     "host": "database-1.chhg8l37c6tv.eu-central-1.rds.amazonaws.com",
-    "database": "shopping_test",
+    "database": "shopping_prod",
     "user": "shopping_user",
     "password": "password123",
     "ssl": {
