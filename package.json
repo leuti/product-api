@@ -11,6 +11,7 @@
     "watch": "tsc-watch --esModuleInterop ./src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "test-ts": "jasmine-ts",
     "test:dev": "npx tsc && db-migrate up --env dev && set ENV=dev && jasmine",
+    "test:test": "npx tsc && db-migrate up --env test && set ENV=test && jasmine",
     "test:prod": "npx tsc && db-migrate up --env prod && set ENV=prod && jasmine",
     "test:drop": "npx tsc && db-migrate up --env test && set ENV=test && jasmine && db-migrate --env test reset",
     "jasmine": "jasmine",

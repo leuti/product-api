@@ -39,6 +39,11 @@ if [ "$ENV" == "dev" ]; then
     npm run test:dev # db-migrate always assumes as environment DEV
     eb deploy Shop1-env
     echo "deployment for $ENV completed"
+elif [ "$ENV" == "test" ]; then
+    # Führt aus, wenn ENV 'prod' ist
+    npm run test:test # db-migrate always assumes as environment DEV
+    eb deploy Shop1-env
+    echo "deployment for $ENV completed"
 elif [ "$ENV" == "prod" ]; then
     # Führt aus, wenn ENV 'prod' ist
     npm run test:prod # db-migrate always assumes as environment DEV
