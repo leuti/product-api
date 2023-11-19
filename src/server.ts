@@ -17,6 +17,7 @@ const app: express.Application = express();
 // const port: string = '3000';
 
 const port = process.env.PORT || 3000;
+const env = process.env.ENV || 'dev';
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -24,7 +25,7 @@ app.use('/img', routes);
 
 app.get('/', function (req: Request, res: Response) {
   res.send(
-    'PROD ENV ----- Welcome to the product shop! Deployment via circleCI working!'
+    `ENV ${env} ----- Welcome to the product shop! Deployment via circleCI working!`
   );
 });
 
